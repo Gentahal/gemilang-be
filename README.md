@@ -1,126 +1,283 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# GEMILANG (Gerbang Manajemen dan Integrasi Langkah Kerja)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+**Tugas 9 – Pemrograman Web: NestJS Dasar + Struktur MVC**
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+GEMILANG merupakan aplikasi **Project Management System** berbasis web yang dirancang untuk membantu tim dalam mengelola proyek dan pekerjaan melalui satu platform terpusat.
 
-## Description
+Repository ini berisi implementasi backend menggunakan **NestJS** dengan pendekatan arsitektur MVC (Model-View-Controller) untuk mengelola entitas `Project`. Backend menyediakan REST API yang mendukung operasi CRUD, validasi data, serta penanganan error.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Teknologi yang Digunakan
 
-## Project setup
+- **Backend:** NestJS
+- **Programming Language:** TypeScript
+- **Runtime:** Node.js
+- **Validation:** class-validator, class-transformer
+- **API Architecture:** REST API
+- **HTTP Client:** Postman / REST Client
+- **Frontend Integration:** React
+- **Data Storage:** In-memory (sementara)
 
-```bash
-$ npm install
+## Fitur Implementasi Backend
+
+1. **Project Management:** Mengelola data proyek yang terdiri dari ID, nama, deskripsi, status, deadline, dan owner ID.
+2. **Create Project:** Menambahkan proyek baru melalui HTTP POST.
+3. **Read Project:** Mengambil seluruh data proyek maupun berdasarkan ID melalui HTTP GET.
+4. **Update Project:** Memperbarui informasi proyek melalui HTTP PATCH.
+5. **Delete Project:** Menghapus data proyek melalui HTTP DELETE.
+6. **Data Validation:** Memvalidasi input menggunakan DTO dan `class-validator`.
+7. **Exception Handling:** Menangani kesalahan menggunakan `NotFoundException`, `ConflictException`, dan `BadRequestException`.
+8. **Frontend Integration:** Menghubungkan REST API dengan frontend React.
+
+## Struktur Folder
+
+```text
+gemilang-be/
+├── assets/
+│   └── week-10/
+│       ├── satu.png
+│       ├── dua.png
+│       ├── tiga.png
+│       ├── empat.png
+│       ├── lima.png
+│       ├── enam.png
+│       ├── tujuh.png
+│       └── delapan.png
+│
+├── src/
+│   ├── projects/
+│   │   ├── dto/
+│   │   │   ├── create-project.dto.ts
+│   │   │   └── update-project.dto.ts
+│   │   ├── entities/
+│   │   ├── projects.controller.spec.ts
+│   │   ├── projects.controller.ts
+│   │   ├── projects.module.ts
+│   │   ├── projects.service.spec.ts
+│   │   └── projects.service.ts
+│   │
+│   ├── app.controller.ts
+│   ├── app.controller.spec.ts
+│   ├── app.module.ts
+│   ├── app.service.ts
+│   └── main.ts
+│
+├── test/
+├── .gitignore
+├── nest-cli.json
+├── package.json
+├── package-lock.json
+└── tsconfig.json
 ```
 
-## Compile and run the project
+## Cara Menjalankan Aplikasi
+
+### 1. Clone Repository
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone <URL_REPOSITORY>
 ```
 
-## Run tests
+Masuk ke direktori project:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cd gemilang-be
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 2. Install Dependencies
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Observability
-
-In production applications, observability is essential for understanding how your system behaves, detecting issues early, and maintaining reliable performance.
-
-[NestJS Observe](https://observe.nestjs.com) automatically instruments your NestJS application, giving you deep visibility into your system with minimal setup:
-
-- **Distributed tracing:** Follow requests across services and understand how they flow through your system.
-- **Waterfall analysis:** Visualize request execution and identify slow operations, bottlenecks, and unexpected delays.
-- **Performance analysis:** Analyze application performance in real time and quickly pinpoint areas that need optimization.
-- **Metrics:** Track key application and infrastructure metrics to understand system health and performance trends.
-- **Logging:** Centralize and correlate logs with traces and other telemetry to make debugging easier.
-- **Error tracking:** Detect errors quickly and investigate their root causes with the surrounding context.
-- **SLA monitoring:** Track service-level objectives and identify when your application is approaching or exceeding defined thresholds.
-- **Alarms and alerts:** Set up alerts for critical errors, performance degradation, SLA violations, and other anomalies so your team can react quickly.
-
-This project is already instrumented. To connect it, run this and approve the code it prints at [observe.nestjs.com/link](https://observe.nestjs.com/link) - signing up for free if you have no account:
+### 3. Jalankan Development Server
 
 ```bash
-$ npx @nestjs/observe link
+npm run start:dev
 ```
 
-It writes the app key and secret into `.env` and makes every `nest start` script (`start`, `start:dev`, `start:debug`) load it. In production, set `OBSERVE_APP_KEY` and `OBSERVE_APP_SECRET` in the environment instead.
+### 4. Akses REST API
 
-Or do it by hand: create an application and an API key at [observe.nestjs.com](https://observe.nestjs.com), and set the pair as `OBSERVE_APP_KEY` and `OBSERVE_APP_SECRET` in the environment the app runs in.
+Setelah server berhasil dijalankan, API dapat diakses melalui:
 
-The free plan needs no payment details and covers 300,000 events a month. You can also browse the [live demo](https://www.observe-demo.nestjs.com/dashboard) first - the whole dashboard over a busy service's data, with nothing to install.
+```text
+http://localhost:3000/projects
+```
 
-## Resources
+Pastikan server berjalan sebelum melakukan pengujian menggunakan Postman atau REST Client.
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Auto-instrument your application with [NestJS Observe](https://observe.nestjs.com). Distributed tracing, metrics, and logging made easy. Error tracking and performance monitoring for your NestJS applications.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Dokumentasi REST API
 
-## Support
+Base URL:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```text
+http://localhost:3000
+```
 
-## Stay in touch
+| Method | Endpoint | Deskripsi |
+|---|---|---|
+| POST | `/projects` | Menambahkan proyek baru |
+| GET | `/projects` | Mengambil seluruh proyek |
+| GET | `/projects/:id` | Mengambil proyek berdasarkan ID |
+| PATCH | `/projects/:id` | Memperbarui data proyek |
+| DELETE | `/projects/:id` | Menghapus proyek berdasarkan ID |
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Format Data Project
 
-## License
+Contoh struktur JSON data proyek:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```json
+{
+  "id": "56cea1b2-3fa7-4bb7-b679-5d78acdae98e",
+  "name": "Sistem Informasi Akademik",
+  "description": "Pembuatan modul registrasi mahasiswa",
+  "status": "In Progress",
+  "deadline": null,
+  "ownerId": "user-123"
+}
+```
+
+---
+
+## Dokumentasi Pengujian API
+
+Pengujian dilakukan menggunakan REST Client untuk memastikan setiap endpoint berjalan sesuai dengan fungsinya, termasuk skenario validasi dan exception handling.
+
+### 1. Menambahkan Data Project (POST) – Berhasil
+
+Melakukan penambahan data proyek baru menggunakan HTTP POST dengan mengirimkan data melalui request body berformat JSON.
+
+**Endpoint:**
+
+```http
+POST /projects
+```
+
+![POST Project Success](assets/week-10/satu.png)
+
+### 2. Validasi DTO Error (POST) – Bad Request
+
+Melakukan pengujian validasi dengan mengirimkan data yang tidak sesuai dengan ketentuan DTO. Sistem akan mengembalikan respons `400 Bad Request` apabila input tidak memenuhi aturan validasi.
+
+**Endpoint:**
+
+```http
+POST /projects
+```
+
+![DTO Validation Error](assets/week-10/dua.png)
+
+### 3. Skenario Error Duplikat (POST) – ConflictException
+
+Melakukan pengujian dengan menambahkan proyek yang memiliki data duplikat. Sistem menangani konflik tersebut menggunakan `ConflictException` dan mengembalikan respons `409 Conflict`.
+
+**Endpoint:**
+
+```http
+POST /projects
+```
+
+![Duplicate Project Error](assets/week-10/tiga.png)
+
+### 4. Mengambil Seluruh Data Project (GET)
+
+Melakukan pengujian untuk mendapatkan seluruh daftar proyek yang tersimpan pada backend.
+
+**Endpoint:**
+
+```http
+GET /projects
+```
+
+![Get All Projects](assets/week-10/empat.png)
+
+### 5. Mengambil Data Project Berdasarkan ID (GET)
+
+Melakukan pengujian untuk mendapatkan informasi proyek secara spesifik berdasarkan ID yang diberikan pada URL endpoint.
+
+**Endpoint:**
+
+```http
+GET /projects/:id
+```
+
+![Get Project By ID](assets/week-10/lima.png)
+
+### 6. Skenario Error Data Tidak Ditemukan (GET) – NotFoundException
+
+Melakukan pengujian menggunakan ID proyek yang tidak tersedia. Sistem akan mengembalikan `404 Not Found` melalui mekanisme `NotFoundException`.
+
+**Endpoint:**
+
+```http
+GET /projects/:id
+```
+
+![Project Not Found](assets/week-10/enam.png)
+
+### 7. Memperbarui Data Project (PATCH)
+
+Melakukan pengujian pembaruan informasi proyek menggunakan HTTP PATCH. Pada pengujian ini, perubahan dilakukan terhadap atribut status proyek menjadi `In Progress`.
+
+**Endpoint:**
+
+```http
+PATCH /projects/:id
+```
+
+**Request Body:**
+
+```json
+{
+  "status": "In Progress"
+}
+```
+
+![Update Project](assets/week-10/tujuh.png)
+
+### 8. Menghapus Data Project (DELETE)
+
+Melakukan pengujian penghapusan data proyek berdasarkan ID menggunakan HTTP DELETE. Endpoint ini digunakan untuk memastikan data proyek dapat dihapus melalui backend.
+
+**Endpoint:**
+
+```http
+DELETE /projects/:id
+```
+
+![Delete Project](assets/week-10/delapan.png)
+
+---
+
+## Dokumentasi Integrasi Frontend
+
+Backend GEMILANG juga diintegrasikan dengan frontend berbasis React melalui REST API.
+
+Integrasi ini memungkinkan pengguna untuk melakukan pengelolaan data proyek melalui antarmuka aplikasi, sementara backend NestJS bertanggung jawab dalam memproses request, menjalankan logika bisnis, dan mengembalikan respons kepada frontend.
+
+Operasi yang didukung dalam integrasi meliputi:
+
+- Menampilkan daftar proyek.
+- Menambahkan proyek baru.
+- Menghapus proyek.
+- Memperbarui informasi proyek.
+
+Integrasi frontend dan backend dilakukan melalui komunikasi HTTP dengan format pertukaran data JSON.
+
+---
+
+## Kesimpulan
+
+Melalui pengerjaan tugas ini, implementasi dasar backend menggunakan NestJS berhasil dikembangkan dengan menerapkan pemisahan tanggung jawab melalui Controller, Service, dan DTO.
+
+Implementasi ini mencakup operasi CRUD, validasi data, exception handling, serta integrasi REST API dengan frontend React.
+
+Dengan demikian, GEMILANG menjadi fondasi pengembangan aplikasi Project Management System yang dapat dikembangkan lebih lanjut menggunakan database permanen dan fitur manajemen proyek yang lebih kompleks.
+
+---
+
+**Project:** GEMILANG – Gerbang Manajemen dan Integrasi Langkah Kerja  
+**Mata Kuliah:** Pemrograman Web  
+**Materi:** NestJS Dasar + Struktur MVC  
+**Repository:** Backend GEMILANG
