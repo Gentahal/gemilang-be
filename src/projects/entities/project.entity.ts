@@ -6,10 +6,12 @@ export enum ProjectStatus {
 }
 
 export class Project {
-  id: string;             // string (UUID)
-  name: string;           // string
-  description: string;    // string
-  status: ProjectStatus;  // enum
-  deadline: Date | null;  // Date
-  ownerId: string;        // string
+  id: string;
+  name: string;
+  description: string;
+  status: ProjectStatus;
+  deadline: Date | null;
+  ownerId: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

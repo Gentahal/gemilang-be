@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { ProjectsService } from './projects.service.js';
 import { CreateProjectDto } from './dto/create-project.dto.js';
 import { UpdateProjectDto } from './dto/update-project.dto.js';
+import { ProjectStatus } from './entities/project.entity.js';
 
 @Controller('projects')
 export class ProjectsController {
@@ -13,8 +14,13 @@ export class ProjectsController {
   }
 
   @Get()
-  findAll() {
-    return this.projectsService.findAll();
+  findAll(@Query('status') status?: ProjectStatus) {
+    return this.projectsService.findAll(status);
+  }
+
+  @Get('stats')
+  getStats() {
+    return this.projectsService.getStats();
   }
 
   @Get(':id')

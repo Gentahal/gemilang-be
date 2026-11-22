@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProjectsController } from './projects.controller.js';
 import { ProjectsService } from './projects.service.js';
+import { PrismaService } from '../prisma/prisma.service.js';
 
 describe('ProjectsController', () => {
   let controller: ProjectsController;
@@ -8,7 +9,24 @@ describe('ProjectsController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ProjectsController],
-      providers: [ProjectsService],
+      providers: [
+        ProjectsService,
+        {
+          provide: PrismaService,
+          useValue: {
+            project: {
+              findUnique: vi.fn(),
+              findMany: vi.fn(),
+              findFirst: vi.fn(),
+              create: vi.fn(),
+              update: vi.fn(),
+              delete: vi.fn(),
+              count: vi.fn(),
+              groupBy: vi.fn(),
+            },
+          },
+        },
+      ],
     }).compile();
 
     controller = module.get<ProjectsController>(ProjectsController);
